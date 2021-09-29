@@ -1,16 +1,34 @@
-const input = document.querySelector('input');
-const bttnGen = document.querySelector('button');
-const tbody = document.querySelectorAll('tbody');
+let generateBttn = document.querySelector('button').addEventListener('click', (e) => {
+  //tbody-Variable
+  let tbody = document.querySelector('tbody');
 
-bttnGen.addEventListener('click', genList);
+  //tbody-leeren nach jedem generate
+  tbody.innerHTML = '';
 
-function genList() {
-  for (let index = 0; index < input.value; index++) {
+  //Input einlesen
+  let inputzahl = document.querySelector('#i').value;
+
+  //Tabellen-Reihe
+  for (let indexA = 0; indexA < inputzahl; indexA++) {
+    //Erstellen der Tabellen-Reihe
     let tr = document.createElement('tr');
-    tbody.appendChild(tr);
+    //Clickevent der Tabellenreihe
+    tr.addEventListener('click', (e) => {
+      console.log('Row clicked');
+      tr.classList.toggle("selected")
+    });
 
-    // let td = document.createElement('td');
-    // tr.appendChild(td);
-    // td.innerText = index;
+    //Tabellen-Inhalt
+    for (let indexI = 0; indexI < 3; indexI++) {
+      //Inhalt eines RowItems hinzufügen
+      let tdIitem = document.createElement('td');
+      tdIitem.innerText = indexA + indexI;
+
+      //Der Tabellenreihe hinzufügen
+      tr.appendChild(tdIitem);
+    }
+
+    //Tabellenreihe hinzufügen
+    tbody.appendChild(tr);
   }
-}
+});

@@ -9,7 +9,7 @@ let generateBttn = document.querySelector('button').addEventListener('click', (e
   let inputzahl = document.querySelector('#i').value;
 
   //Tabellen-Reihe
-  for (let indexA = 0; indexA < inputzahl; indexA++) {
+  for (let indexA = 1; indexA <= inputzahl; indexA++) {
     //Erstellen der Tabellen-Reihe
     let tr = document.createElement('tr');
     //Clickevent der Tabellenreihe
